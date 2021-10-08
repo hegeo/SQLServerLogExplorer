@@ -1,0 +1,67 @@
+﻿<Window x:Class="SSLE.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SSLE"
+        mc:Ignorable="d"
+    Title="SSLE" Height="648" Width="1000" ResizeMode="NoResize" WindowStyle="None" WindowStartupLocation="CenterScreen">
+    <Grid Background="#FFF6EEFF" Width="1000" Height="648.3" HorizontalAlignment="Left" Margin="0,0,-20,-88" VerticalAlignment="Top" OpacityMask="Black">
+        <Border BorderBrush="#FFC3C3C3" BorderThickness="1" HorizontalAlignment="Left" Height="648" VerticalAlignment="Top" Width="1000"/>
+        <Grid HorizontalAlignment="Left" Height="45.2" VerticalAlignment="Top" Width="1000" Background="#FF8A3AFD" MouseDown="Grid_MouseDown">
+            <Image x:Name="image" Margin="4,3,943,5.2" Source="images/logo.png"/>
+            <Label x:Name="label" Content="SQLSERVER" HorizontalAlignment="Left" Margin="50,3,0,0" VerticalAlignment="Top" Width="149" Foreground="White" FontSize="24" Height="38"/>
+            <Label x:Name="label_Copy" Content="日志查看器" HorizontalAlignment="Left" Margin="187,6,0,0" VerticalAlignment="Top" Width="138" Foreground="White" Height="28" FontSize="13" FontWeight="Bold"/>
+            <Label x:Name="label_Copy1" Content="LOG EXPLORER" HorizontalAlignment="Left" Margin="188,21,0,-1.8" VerticalAlignment="Top" Width="137" Foreground="White" Height="26" FontSize="7" FontWeight="Bold"/>
+            <Image x:Name="按钮退出图标" Height="23" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Source="images/exit.png" Margin="970,11,10,0" Stretch="Fill" MouseDown="按钮退出图标_MouseDown">
+                <Image.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform AngleX="0.281"/>
+                        <RotateTransform/>
+                        <TranslateTransform X="0.245"/>
+                    </TransformGroup>
+                </Image.RenderTransform>
+            </Image>
+        </Grid>
+        <Rectangle Fill="#FFFCF8FF" HorizontalAlignment="Left" Height="407" Margin="5,236,0,0" VerticalAlignment="Top" Width="205" Stroke="#4C8F8F8F"/>
+        <Rectangle Fill="#FFFCF8FF" HorizontalAlignment="Left" Height="134" Margin="5,71,0,0" VerticalAlignment="Top" Width="205" Stroke="#4C8F8F8F"/>
+        <DataGrid x:Name="loggird" ItemsSource="{Binding}" HorizontalAlignment="Right" Margin="0,71,5,0" VerticalAlignment="Top" Width="780" Height="572" Background="#FFFCF8FF" BorderBrush="#4C9C9C9C" HorizontalGridLinesBrush="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" VerticalGridLinesBrush="{DynamicResource {x:Static SystemColors.ControlBrushKey}}" AutoGenerateColumns="False" FontSize="11" SelectionUnit="Cell" BorderThickness="0">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="事务ID"  Width="80" Binding="{Binding TransactionID}"/>
+                <DataGridTextColumn Header="时间"  Width="80" Binding="{Binding BeginTime}"/>
+                <DataGridTextColumn Header="对象"  Width="80" Binding="{Binding ObjectName}"/>
+                <DataGridTextColumn  Header="操作" Width="80" Binding="{Binding Operation}"/>
+                <DataGridTextColumn  Header="操作SQL" Width="240" Binding="{Binding RedoSQL}"/>
+                <DataGridTextColumn  Header="恢复SQL" Width="240" Binding="{Binding UndoSQL}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label x:Name="label1" Content="主机名" HorizontalAlignment="Left" Margin="9,78,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="thost" HorizontalAlignment="Left" Height="18" Margin="70,80,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" BorderThickness="1" Background="White" BorderBrush="#FFD8D8D8" FontSize="11"/>
+        <Label x:Name="label1_Copy2" Content="" HorizontalAlignment="Left" Margin="568,41,0,0" VerticalAlignment="Top" RenderTransformOrigin="3.765,0.846"/>
+        <Button x:Name="btconnect" Content="测试连接" HorizontalAlignment="Left" Margin="14,175,0,0" VerticalAlignment="Top" Width="187" Background="#FFE5D8FB" BorderThickness="1" Height="22" BorderBrush="#FFD4D4D4" Click="btconnect_Click"/>
+        <TextBox x:Name="tuser" HorizontalAlignment="Left" Height="18" Margin="70,103,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="130" BorderThickness="1" Background="White" BorderBrush="#FFD8D8D8" FontSize="11"/>
+        <Label x:Name="label1_Copy" Content="用户名" HorizontalAlignment="Left" Margin="9,101,0,0" VerticalAlignment="Top"/>
+        <PasswordBox x:Name="tcode" PasswordChar="*" HorizontalAlignment="Left" Height="18" Margin="70,126,0,0"  VerticalAlignment="Top" Width="130" BorderThickness="1" Background="White" BorderBrush="#FFD8D8D8" FontSize="11"/>
+        <Label x:Name="label1_Copy1" Content="密码" HorizontalAlignment="Left" Margin="9,124,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="checkBox" Content="使用Windows管理员登陆" HorizontalAlignment="Left" Margin="15,153,0,0" VerticalAlignment="Top" Width="15" RenderTransformOrigin="0.5,0.5" FontSize="10" Checked="checkBox_Checked" Unchecked="checkBox_Unchecked"/>
+        <Label x:Name="label1_Copy3" Content="数据库" HorizontalAlignment="Left" Margin="9,243,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label1_Copy4" Content="数据表" HorizontalAlignment="Left" Margin="9,266,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label1_Copy5" Content="开始时间" HorizontalAlignment="Left" Margin="9,289,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label1_Copy6" Content="结束时间" HorizontalAlignment="Left" Margin="9,313,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btdblog" Content="查询日志" HorizontalAlignment="Left" Margin="14,346,0,0" VerticalAlignment="Top" Width="187" Background="#FFE5D8FB" BorderThickness="1" Height="22" BorderBrush="#FFD4D4D4" IsEnabled="False" Click="btdblog_Click"/>
+        <ComboBox x:Name="stable" HorizontalAlignment="Left" Margin="70,268,0,0" VerticalAlignment="Top" Width="130" Height="19" IsEnabled="False" FontSize="11"/>
+        <ComboBox x:Name="sdatabase" HorizontalAlignment="Left" Margin="70,245,0,0" VerticalAlignment="Top" Width="130" Height="19" IsEnabled="False" FontSize="11" SelectionChanged="sdatabase_SelectionChanged"/>
+        <DatePicker x:Name="senddate" HorizontalAlignment="Left" Margin="70,315,0,0" VerticalAlignment="Top" Width="130" Height="21" IsEnabled="False" BorderBrush="#FFADB2B5" FontSize="11" SelectedDateFormat="Long"/>
+        <Label x:Name="label2" Content="连接设置" HorizontalAlignment="Left" Margin="4,46,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label2_Copy" Content="筛选条件" HorizontalAlignment="Left" Margin="4,210,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label2_Copy1" Content="Ver 1.0.1" HorizontalAlignment="Left" Margin="14,434,0,0" VerticalAlignment="Top" Foreground="#FF9B9B9B"/>
+        <Label x:Name="label2_Copy2" Content="使用Windows管理员登录" HorizontalAlignment="Left" Margin="30,147,0,0" VerticalAlignment="Top"/>
+        <DatePicker x:Name="sbegindate" HorizontalAlignment="Left" Margin="70,290,0,0" VerticalAlignment="Top" Width="130" Height="21" IsEnabled="False" BorderBrush="#FFADB2B5" FontSize="11" SelectedDateFormat="Long" IsDropDownOpen="True"/>
+        <Label x:Name="label2_Copy3" Content="日志详情" HorizontalAlignment="Left" Margin="214,46,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="btextsql" Content="导出恢复SQL" HorizontalAlignment="Left" Margin="14,373,0,0" VerticalAlignment="Top" Width="187" Background="#FFE5D8FB" BorderThickness="1" Height="22" BorderBrush="#FFD4D4D4" IsEnabled="False" Click="btextsql_Click"/>
+        <Label x:Name="label2_Copy4" Content="使用Windows管理员登录" HorizontalAlignment="Left" Margin="30,147,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="168" Margin="14,460,0,0" IsReadOnly="True" TextWrapping="Wrap" Text="本工具当前仅支持活动事务日志查询，为了防止SQLSERVER重启后事务日志被自动截断，请设置数据库恢复模式为完整，且至少进行过一次完整备份。&#13;&#13;如有相关建议或意见欢迎联系开发者邮箱：encvstin@qq.com&#13;&#13;本工具基于DBLOG项目构建&#13;项目源：github.com/ap0405140&#13;" VerticalAlignment="Top" Width="187" Background="{x:Null}" BorderThickness="0,1,0,0" FontSize="11" Foreground="#FF9B9B9B"/>
+
+    </Grid>
+</Window>
